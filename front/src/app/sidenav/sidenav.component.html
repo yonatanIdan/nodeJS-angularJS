@@ -1,0 +1,26 @@
+<ng-container>
+    <mat-toolbar class="header">
+      <img src="https://cdn.logo.com/hotlink-ok/logo-social-sq.png" width="60px" alt="Logo">
+          
+      <button mat-icon-button (click)="sidenav.toggle()" color="primary" aria-label="icon button with a menu icon">
+          <mat-icon>menu</mat-icon>
+      </button>
+
+    </mat-toolbar>
+  
+    <mat-sidenav-container class="container">
+      <mat-sidenav #sidenav mode="side" opened class="sidenav">
+
+        <app-navbar></app-navbar>
+
+      </mat-sidenav>
+
+      <div class="screen">
+        <router-outlet> </router-outlet>
+      </div>
+
+    </mat-sidenav-container>
+  
+    <mat-toolbar class="footer">© Copyright- all rights reserved</mat-toolbar>
+  </ng-container>
+  

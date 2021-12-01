@@ -1,0 +1,32 @@
+<!-- <div *ngIf="user">
+    Name: {{user.user.name}} {{user.user.lname}} <br>
+    Role: {{user.user.role}}<br>
+    Email: {{user.user.email}}<br>
+    Phone: {{user.user.phone}}
+</div> -->
+<div class="flex_container">
+  <mat-card class="card" *ngIf="user">
+    <mat-card-header>
+      <img mat-card-avatar class="header-image" [src]="previewImage">
+      <mat-card-title
+        >{{ user.user.name }} {{ user.user.lname }}</mat-card-title
+      >
+      <mat-card-subtitle>Email: {{ user.user.email }}</mat-card-subtitle>
+    </mat-card-header>
+    <div class="grid">
+        <!-- <img
+          mat-card-image
+          class="png"
+          src="https://www.pavilionweb.com/wp-content/uploads/2017/03/man-300x300.png"
+        /> -->
+        <!-- <mat-spinner></mat-spinner> -->
+        <img *ngIf="previewImage" [src]="previewImage" style="max-width: 300px; max-height: 300px; border-radius: 30px">
+    </div>
+    <mat-card-content>
+      <p>
+        Role: {{ user.user.role }}<br />
+        Phone: {{ user.user.phone }}
+      </p>
+    </mat-card-content>
+  </mat-card>
+</div>

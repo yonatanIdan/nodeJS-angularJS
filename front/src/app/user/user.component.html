@@ -1,0 +1,96 @@
+<h2 *ngIf="!update">New User:</h2>
+<h2 *ngIf="update">Update User:</h2>
+<form class="form" [formGroup]="userForm">
+    <table>
+        <tr>
+            <td>
+                <mat-form-field class="full-width">
+                  <mat-label>Name</mat-label>
+                  <input type="text" matInput formControlName="name">
+                  <mat-error *ngIf="userForm.controls['name'].invalid && userForm.controls['name'].touched">
+                    Please enter a name 
+                    Name is <strong>required</strong>
+                  </mat-error>
+                </mat-form-field>
+            </td>
+            <td>
+                <mat-form-field class="full-width">
+                <mat-label>Last Name</mat-label>
+                <input type="text" matInput formControlName="lname">
+                <mat-error *ngIf="userForm.controls['lname'].invalid">
+                    Please enter a last name 
+                    Last Name is <strong>required</strong>
+                </mat-error>
+                </mat-form-field>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <mat-form-field appearance="fill">
+                    <mat-label>Role</mat-label>
+                    <mat-select name="role" formControlName="role">
+                    <mat-option *ngFor="let role of roles" [value]="role.value">
+                        {{role.viewValue}}
+                    </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <mat-form-field class="full-width">
+                    <mat-label>phone</mat-label>
+                    <input type="text" minLength="9" maxLength="10" matInput formControlName="phone">
+                    <mat-error *ngIf="userForm.controls['lname'].invalid">
+                    Please enter a phone with 9-10 digits.
+                    phone is <strong>required</strong>
+                    </mat-error>
+                </mat-form-field>
+            </td>
+            <td>    
+                <mat-form-field class="full-width">
+                <mat-label>Email</mat-label>
+                <input type="email" matInput formControlName="email" placeholder="Ex. pat@example.com">
+                <mat-error *ngIf="userForm.controls['email'].invalid">
+                    Please enter a valid email address
+                    Email is <strong>required</strong>
+                </mat-error>
+                </mat-form-field>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <mat-form-field class="full-width">
+                <mat-label>Password</mat-label>
+                <input type="text" minLength="5" matInput formControlName="password">
+                <mat-error *ngIf="userForm.controls['password'].invalid && userForm.controls['password'].touched">
+                    Please enter a password 
+                    Password is <strong>required</strong>
+                </mat-error>
+                </mat-form-field>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <mat-card>
+                    <input accept="image/*" type="file"  (change)="fileProgress($event)" name="fileName" />
+                    <!-- <input accept="image/*" type="file" formControlName="photo" (change)="fileProgress($event)" [(ngModel)]="fileName" name="fileName" /> -->
+                    <mat-label mat-button *ngIf="source" (mouseover)="iamgeShow=true" (mouseout)="iamgeShow=false">Show Image</mat-label>
+                    <div>
+                        <img *ngIf="source && iamgeShow" [src]="previewUrl" style="width: 150px; display: block;">
+                    </div>
+                </mat-card>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <button mat-raised-button color="primary" *ngIf="!update" [disabled]="!userForm.valid" (click)="callUser()">New</button>
+                <button mat-raised-button color="primary" *ngIf="update" [disabled]="!userForm.valid" (click)="updateUser()">Update</button>
+            </td>
+            <td>
+                <button mat-raised-button color="warn" *ngIf="update && admin" [disabled]="!userForm.valid" (click)="deleteUser()">Delete</button>
+                <button mat-raised-button color="warn" type="button" (click)="cancel()">Cancel</button>
+            </td>
+        </tr>
+    </table>
+</form>

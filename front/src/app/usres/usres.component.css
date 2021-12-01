@@ -1,0 +1,31 @@
+/* .user{
+    border: 1px solid black;
+    margin: 5px;
+    padding: 3px;
+    border-radius: 5px;
+} */
+
+/* table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+  }*/
+
+
+
+/* Structure */
+
+table {
+  width: 100%;
+}
+
+td {
+  cursor: pointer;
+}
+.tableTd{
+  padding: 5px 10px;
+}
+
+.mat-form-field {
+  font-size: 14px;
+  width: 100%;
+}

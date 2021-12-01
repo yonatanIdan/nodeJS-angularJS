@@ -1,0 +1,28 @@
+<mat-list>
+    <mat-list-item>
+        <button mat-button>About Us</button>
+        <mat-icon>info</mat-icon>
+    </mat-list-item>
+    <mat-divider></mat-divider>
+</mat-list>
+<mat-list *ngIf="isLoggedIn">
+    <mat-list-item (click)="routerNavigate('message')">
+        <button mat-button>My Card</button>
+        <mat-icon>face</mat-icon>
+    </mat-list-item>
+    <mat-divider></mat-divider>
+    <mat-list-item (click)="routerNavigate('chat')">
+        <button mat-button>Chat</button>
+        <mat-icon>record_voice_over</mat-icon>
+    </mat-list-item>
+    <mat-divider></mat-divider>
+    <mat-list-item (click)="routerNavigate('main')">
+        <button mat-button>Users</button>
+        <mat-icon>settings_accessibility</mat-icon>
+    </mat-list-item>
+    <mat-divider></mat-divider>
+    <mat-list-item (click)="setLogout()">
+        <button mat-button>Logout</button>
+        <mat-icon>logout</mat-icon>
+    </mat-list-item>
+</mat-list>

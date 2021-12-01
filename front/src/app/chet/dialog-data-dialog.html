@@ -1,0 +1,25 @@
+<h1 mat-dialog-title>Messages with <b>{{ data.partner.name }}</b></h1>
+<button mat-button (click)="reloadMessages()">
+  <mat-icon>autorenew</mat-icon>
+</button>
+<div mat-dialog-content>
+  <div class="flex_container">
+    <mat-card class="card">
+      <mat-card-content>
+        <div class="messageBlock" (scroll)="scrolled($event)" #scrollframe>
+          <div class="allMessages" *ngFor="let mes of privateMessage"  #item>
+            <div>{{ mes.user }}:</div>
+            <mat-icon class="checkIcon" *ngIf="mes.user =='Me' && mes.read == true" style="color: green">done_all</mat-icon>
+            <mat-icon class="checkIcon" *ngIf="mes.user =='Me' && mes.read == false" style="color: blue">done</mat-icon>
+            <div class="message">{{ mes.message }}</div>
+            <div class="date">{{ mes.time | date: "dd-MM-yy hh:mm:ss" }}</div>
+          </div>
+        </div>
+        <br/>
+        <h2>Send New Message</h2>
+        <textarea matInput class="inputMessage" type="text" (keydown.enter)='sendPrivateMessage(data.partner)' [(ngModel)]="out_message"></textarea>
+        <button mat-button style="float: right" (click)="sendPrivateMessage(data.partner)">Send Message <mat-icon>send</mat-icon></button>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>

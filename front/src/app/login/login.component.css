@@ -1,0 +1,13 @@
+.flex_container {
+  display: flex;
+}
+
+.mat-stepper-horizontal {
+  margin-top: 8px;
+  width: 300px;
+  margin: 40px auto;
+}
+
+.mat-form-field {
+  margin-top: 16px;
+}

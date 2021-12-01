@@ -1,0 +1,56 @@
+<div class="flex_container">
+  <mat-card class="card">
+    <mat-card-header>
+      <mat-card-title>
+        <h1>Messages</h1>
+        <button><mat-icon class='delete' (click)='messageDelete()'>delete</mat-icon></button>
+      </mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <h3>Messages:</h3>
+      <div class="messageBlock" (scroll)="scrolled($event)" #scrollframe>
+        <div class="allMessages" *ngFor="let mes of messages" #item>
+          <div>{{ mes.user }}:</div>
+          <mat-icon class="checkIcon" *ngIf="mes.user =='Me'" style="color:green">done_all</mat-icon>
+          <div class="message">{{ mes.message }}</div>
+          <div class="date">{{ mes.time | date: "dd-MM-yy hh:mm:ss" }}</div>
+        </div>
+      </div>
+      <br>
+      <h2>Send New Message</h2>
+      <textarea matInput class="inputMessage" type="text" (keydown.enter)='sendMessage()' [(ngModel)]="out_message" ></textarea>
+      <button mat-button style="float: right" (click)="sendMessage()">Send Message <mat-icon>send</mat-icon></button>
+    </mat-card-content>
+  </mat-card>
+
+  <mat-card class="card2">
+    <mat-card-header>
+      <mat-card-title>
+        <h2>Private Messages
+          <button mat-button (click)="reloadUsers()">
+            <mat-icon>autorenew</mat-icon>
+          </button>
+        </h2>
+      </mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <h3 *ngIf='users.length > 0'>Private online Messages</h3>
+      <mat-nav-list class="listUsers">
+        <button mat-list-item *ngFor="let user of users" (click)="openDialog(user)" >
+          <strong>{{ user.name }}</strong>
+          <mat-icon class='online'>how_to_reg</mat-icon>
+        </button>
+      </mat-nav-list>
+      <mat-card-title>
+        <h3 *ngIf='usersOffline.length > 0'>Private offline Messages</h3>
+      </mat-card-title>
+      <mat-nav-list  class="listUsers">
+        <button mat-list-item *ngFor="let user of usersOffline" (click)="openDialog(user)" >
+          <strong>{{ user.name }}</strong>
+          <mat-icon class='offline'>nightlight_round</mat-icon>
+        </button>
+      </mat-nav-list>
+    </mat-card-content>
+  </mat-card>
+</div>
+  

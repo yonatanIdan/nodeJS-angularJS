@@ -1,0 +1,10 @@
+<mat-card>
+    <mat-label>Add file</mat-label>
+    <input type="file" id="photo" class="file" (change)="fileProgress($event)" [(ngModel)]="fileName" name="fileName" />
+    <button (click)="uploadPic()">upload picture</button>
+    <div *ngIf='previewUrl'>
+        <img *ngIf="isPic()" [src]="previewUrl" width='150px'>
+        <pdf-viewer *ngIf="isPDF()" [src]="previewUrl" [render-text]="true" style="display: block;"></pdf-viewer>
+    </div>
+    <!-- <img style="height: 150px; width: 150px" [src]="transform()"> -->
+</mat-card>

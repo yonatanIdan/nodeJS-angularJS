@@ -1,0 +1,31 @@
+/* div{
+    display: table;
+    border:1px solid black;
+    border-radius: 15px;
+    padding: 10px;
+    margin: 20px;
+    text-align: center;
+    font-size: 30px;
+} */
+.flex_container {
+    display: flex;
+}
+
+.card {
+    width: 400px;
+    margin: 40px auto;
+}
+
+.header-image {
+    background-image: url('https://www.pavilionweb.com/wp-content/uploads/2017/03/man-300x300.png');
+    background-size: cover;
+}
+
+.png{
+    width: 200px;
+}
+.grid{
+    place-items: center;
+    display:grid;
+    margin:30px;
+}
